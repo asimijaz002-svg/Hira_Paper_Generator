@@ -1,0 +1,52 @@
+HIRA EXAM PAPERS - UPDATE & GO-LIVE GUIDE
+=========================================
+WHAT IS NEW IN THIS VERSION
+1. SYNC FIX: sw.js no longer caches Firebase data, so changes made on one phone/PC appear on all others.
+2. ARABIC FONTS: Quran & Hadith text now uses a clear Naskh font (Amiri). In every paper, under
+   "Paper medium", there is a new "Arabic font" box: Amiri Naskh (recommended), Amiri Quran,
+   Scheherazade New, Noto Naskh Arabic, or the old Nastaleeq. The choice is saved with the paper
+   and syncs to all devices. Urdu text stays in Nastaleeq. (Fonts download once from Google
+   Fonts, so the first open needs internet; after that they are cached.)
+
+PART 1 - GITHUB (put the files online)
+1. Unzip hira-exam-app-fixed.zip on your computer. Open the folder "hira-exam-app".
+2. Go to github.com > your repository (the one used for the app).
+3. Click "Add file" > "Upload files".
+4. Drag ALL files from inside the hira-exam-app folder (index.html, sw.js, manifest.webmanifest,
+   icon-192.png, icon-512.png, icon.svg, README.txt). Do not upload the folder itself, and the
+   "desktop" folder is optional. Files must sit at the top level of the repository, not in a subfolder.
+5. Scroll down, click "Commit changes".
+6. Settings > Pages: Source = "Deploy from a branch", Branch = main, folder = / (root). Save.
+   After 1-2 minutes your link works: https://YOUR-USERNAME.github.io/REPOSITORY-NAME/
+7. Open the link, press Ctrl+F5 (PC) once to refresh.
+
+PART 2 - FIREBASE (the cloud that syncs phones)
+1. Go to console.firebase.google.com > open project "exam-generator-c7a5a".
+2. Left menu: Build > Realtime Database. It must exist (URL like exam-generator-c7a5a-default-rtdb.firebaseio.com).
+3. Open the "Rules" tab. The app has no Firebase login, so rules must allow the app's path.
+   Paste this and press "Publish":
+
+   {
+     "rules": {
+       ".read": false,
+       ".write": false,
+       "hira-exam-v2-Rk3p8Zq5Nw": {
+         ".read": true,
+         ".write": true
+       }
+     }
+   }
+
+   (Only this one secret path is open; everything else stays locked. Anyone who has the app link can
+   use it, so keep the link and passwords private.)
+4. Open the app and sign in. The top bar must show "Synced". If it shows "Offline", tap/hover it to
+   see the reason ("Permission denied" = rules are wrong; "No internet" = connection).
+
+PART 3 - MOBILES (every teacher)
+1. Send teachers your GitHub link. Open it in Chrome (Android) or Safari (iPhone).
+2. Android: menu (3 dots) > Install app / Add to Home screen. iPhone: Share > Add to Home Screen.
+3. Phones that already had the old app: open it twice (it updates itself), or remove it and install again.
+
+TEST
+Change a paper on your phone; within a few seconds it appears on the PC. A paper you are currently
+editing is not overwritten while you type; it updates when you leave it.

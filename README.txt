@@ -19,4 +19,4 @@ C) REAL WINDOWS .EXE (optional, needs Node.js + internet once on one PC):
  Android APK: upload the hosted link to pwabuilder.com and download the Android package.
 
 SCANNER: needs internet the first time (downloads the OCR engine), then it is cached. Always review scanned text.
-DATA: papers are saved per device/browser. Use Share > Copy paper code to send papers to the admin.
+DATA: papers sync automatically through Firebase (cloud) on every device. See SYNC-FIX-INSTRUCTIONS.txt.
