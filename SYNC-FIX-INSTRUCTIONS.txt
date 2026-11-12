@@ -50,3 +50,12 @@ PART 3 - MOBILES (every teacher)
 TEST
 Change a paper on your phone; within a few seconds it appears on the PC. A paper you are currently
 editing is not overwritten while you type; it updates when you leave it.
+
+TROUBLESHOOTING - "changes do not reach the mobile"
+1. Tap the cloud word at the top ("Synced") on the phone. A message shows "build sync-fix-3" and the site name.
+   - No "build sync-fix-3" message = the phone still runs the OLD files. Upload index.html AND sw.js to GitHub,
+     then on the phone clear the site data (Chrome > Settings > Site settings > the site > Clear & reset) or remove and reinstall the app.
+2. Use ONE app link everywhere. If the app is also published on Firebase Hosting, that copy is OLD and must not be used
+   (or must be re-deployed with these files). Check that the desktop and the phone show the same site name in that message.
+3. Firebase > Realtime Database > Data: open hira-exam-v2-Rk3p8Zq5Nw. Add a teacher on the PC: a new entry appears
+   under "u" and "rev" changes within seconds. If it does not, the PC is running old files.
